@@ -7,6 +7,7 @@ end
 
 return telescope.register_extension{
 	exports = {
-		get = main.get
+		get = main.get,
+		api_resources = main.api_resources,
 	}
 }
