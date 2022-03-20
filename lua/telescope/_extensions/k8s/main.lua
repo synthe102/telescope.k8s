@@ -10,7 +10,7 @@ local utils = require "telescope.utils"
 
 local K = {}
 
-K.get_resource = function(opts)
+K._get_resources = function(opts)
 	local resource_list = utils.get_os_command_output({"kubectl", "get", opts["resource"], "-A"})
 	table.remove(resource_list, 1)
 	return resource_list
@@ -22,7 +22,7 @@ K.get = function(opts)
 		prompt_title = 'Select a ' .. opts["resource"],
 		results_title = opts["resource"] .. 's',
 		finder = finders.new_table {
-			results = K.get_resource(opts),
+			results = K._get_resources(opts),
 			entry_maker = make_entry.gen_from_string(opts)
 		},
 		sorter = conf.file_sorter(opts),
