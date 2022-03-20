@@ -49,6 +49,7 @@ K.api_resources = function(opts)
 					return { "echo", ""}
 				end
 				get_opts["resource"] = tmp_table[1]
+				get_opts["namespaced"] = tmp_table[#tmp_table-1]
         K.get(get_opts)
       end
       actions.select_default:replace(on_resource_selected)

@@ -13,7 +13,11 @@ K._describe_resource = function(entry, opts)
 	if vim.tbl_isempty(tmp_table) then
 		return { "echo", "Empty resource"}
 	end
-	return { "kubectl", "describe", opts["resource"], tmp_table[2], "-n", tmp_table[1] }
+	if opts["namespaced"] == "true" then
+		return { "kubectl", "describe", opts["resource"], tmp_table[2], "-n", tmp_table[1] }
+	else
+		return { "kubectl", "describe", opts["resource"], tmp_table[1] }
+	end
 end
 
 K._list_api_resources = function()
