@@ -44,10 +44,12 @@ K.api_resources = function(opts)
       local on_resource_selected = function()
 				local entry = action_state.get_selected_entry()
 				local tmp_table = vim.split(entry.value, " +")
+				local get_opts = {}
 				if vim.tbl_isempty(tmp_table) then
 					return { "echo", ""}
 				end
-        K.get({resource=tmp_table[1]})
+				get_opts["resource"] = tmp_table[1]
+        K.get(get_opts)
       end
       actions.select_default:replace(on_resource_selected)
       return true
