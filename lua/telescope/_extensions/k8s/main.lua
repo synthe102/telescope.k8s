@@ -16,6 +16,14 @@ K._get_resources = function(opts)
 	return resource_list
 end
 
+K._describe_resource = function(entry, opts)
+	local tmp_table = vim.split(entry.value, " +")
+	if vim.tbl_isempty(tmp_table) then
+		return { "echo", "Empty resource"}
+	end
+	return { "kubectl", "describe", opts["resource"], tmp_table[2], "-n", tmp_table[1] }
+end
+
 K.get = function(opts)
   vim.api.nvim_echo({{'Hello k8s !' .. opts["resource"] ,'None'}}, false, {})
 	pickers.new(opts or {}, {
@@ -28,11 +36,7 @@ K.get = function(opts)
 		sorter = conf.file_sorter(opts),
 		previewer = previewers.new_termopen_previewer {
 			get_command = function(entry)
-				local tmp_table = vim.split(entry.value, " +")
-				if vim.tbl_isempty(tmp_table) then
-					return { "echo", ""}
-				end
-				return { "kubectl", "describe", opts["resource"], tmp_table[2], "-n", tmp_table[1] }
+				return K._describe_resource(entry,opts)
 			end,
 		}
 	}):find()
