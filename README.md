@@ -2,6 +2,8 @@
 
 View and describe k8s resources using Telescope.nvim 🔭
 
+⚠ This project is under development
+
 ## Getting started
 
 Install telescope.k8s as a requirement for telescope.nvim using Packer:
@@ -9,10 +11,10 @@ Install telescope.k8s as a requirement for telescope.nvim using Packer:
 return require('packer').startup(function()
   use {
   'nvim-telescope/telescope.nvim',
-	  requires = {
-		  { 'nvim-lua/plenary.nvim' },
-		  { 'synthe102/telescope.k8s' }
-	  }
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'synthe102/telescope.k8s' }
+    }
   }
 ```
 
@@ -30,3 +32,9 @@ You can list all the kubernetes resources types available in by your cluster:
 
 You can then search and select a resource type.
 This will list all the resources of the type you selected in all namespaces, and describe the one you're hovering.
+
+## 🚧 Roadmap 🚧
+
+- [ ] Add edition of resources from NeoVim
+- [ ] Allow to select a namespace
+- [ ] Allow to change the kubernetes context
