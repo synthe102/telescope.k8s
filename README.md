@@ -16,6 +16,7 @@ return require('packer').startup(function()
       { 'synthe102/telescope.k8s' }
     }
   }
+end
 ```
 
 Add this to your `init.lua`:
