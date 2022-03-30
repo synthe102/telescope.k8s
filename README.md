@@ -9,10 +9,10 @@ Install telescope.k8s as a requirement for telescope.nvim using Packer:
 return require('packer').startup(function()
   use {
   'nvim-telescope/telescope.nvim',
-		requires = {
-			{ 'nvim-lua/plenary.nvim' },
-			{ 'synthe102/telescope.k8s' }
-		}
+	  requires = {
+		  { 'nvim-lua/plenary.nvim' },
+		  { 'synthe102/telescope.k8s' }
+	  }
   }
 ```
 
